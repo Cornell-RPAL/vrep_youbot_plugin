@@ -1,5 +1,6 @@
 function sysCall_init()
    joint_pub = simROS.advertise("/joint_states", "sensor_msgs/JointState")
+   clock_pub = simROS.advertise("/clock", "rosgraph_msgs/Clock")
 
    joint_names = {"arm_joint_1",
                   "arm_joint_2",
@@ -54,6 +55,7 @@ function sysCall_init()
 end
 
 function sysCall_actuation()
+   simROS.publish(clock_pub,{ clock = sim.getSimulationTime() })
    -- put your actuation code here
    --
    -- For example:
