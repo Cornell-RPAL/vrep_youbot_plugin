@@ -44,7 +44,8 @@ Note: the simulation must be running before you can control the youBot!
 
 Test ROS plugin
 --
-1) You can run the test scripts (test/test_joint_position.sh, test_gripper_position.sh, test_base.sh) in order to check if your are able to control the v-rep youBot using ROS
+1) You can try running `rostopic pub /cmd_vel` with an appropriate `Twist` and checking if the
+youBot moves to confirm that you can control the youBot through ROS.
 
 
 Have fun!
