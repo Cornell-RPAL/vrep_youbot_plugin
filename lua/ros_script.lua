@@ -56,23 +56,13 @@ end
 
 function sysCall_actuation()
    simROS.publish(clock_pub,{ clock = sim.getSimulationTime() })
-   -- put your actuation code here
-   --
-   -- For example:
-   --
-   -- local position=sim.getObjectPosition(handle,-1)
-   -- position[1]=position[1]+0.001
-   -- sim.setObjectPosition(handle,-1,position)
-end
-
-function sysCall_sensing()
    t = sim.getSystemTime()
    p = sim.getObjectPosition(youBot, -1)
    o = sim.getObjectQuaternion(youBot, -1)
    transform = {
       header = {
          stamp = t,
-         frame_id = "map"
+         frame_id = "world"
       },
       child_frame_id = "base_link",
       transform = {
@@ -104,6 +94,9 @@ function sysCall_sensing()
                    position = positions,
                    velocity = velocities,
                    effort = efforts})
+end
+
+function sysCall_sensing()
 end
 
 function sysCall_cleanup()
