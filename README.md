@@ -8,37 +8,32 @@ Installation
 ```
 $ sudo apt-get install ros-indigo-youbot-driver-ros-interface
 ```
-2) Install v-rep (http://www.v-rep.eu/) into i.e. /opt/v-rep
+2) Install v-rep (http://www.v-rep.eu/) into i.e. ~/V-REP
 
 3) Clone the repository into your catkin workspace
 
-4) Copy vrep_common and vrep_plugin ros packages to your catkin workspace
+4) Compile
 
-    $ cp -r /opt/v-rep/programming/ros_packages/vrep_plugin ~/catkin_ws/src/
-    $ cp -r /opt/v-rep/programming/ros_packages/vrep_common ~/catkin_ws/src/
+    $ catkin build
 
-5) Compile
+5) Copy the compiled library libv_repExtyouBot.so into your V-REP directory
 
-    $ catkin_make
-
-6) Copy the compiled libraries libv_repExtyouBot.so and libv_repExtRos.so into your /opt/v-rep directory
-
-    $ sudo cp ~/catkin_ws/devel/lib/libv_repExt* /opt/v-rep
+    $ sudo cp ~/catkin_ws/devel/lib/libv_repExtyouBot.so ~/V-REP
 
 Usage
 --
 
-1) Start ros
+1) Start ROS (optional; `roslaunch` will do this for you)
 
     $ roscore
 
-2) Load v-rep bringup launchfile
+2) Launch ROS components
 
     $ roslaunch vrep_youbot_plugin vrep_youbot.launch
 
 3) Start v-rep
 
-    $ /opt/v-rep/v-rep.sh
+    $ ~/V-REP/v-rep.sh
 
 4) Load the scene file in v-rep (.../vrep_youbot_plugin/scenes/...)
 
